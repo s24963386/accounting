@@ -1,0 +1,81 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+a{cursor: pointer}
+body{font: 12px/1.5 Tahoma, Helvetica, Arial, sans-serif;background: #f7f7f7;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+li{list-style: none;float: left;}
+header, section, footer{width: 960px;margin: 0 auto;}
+nav.top-nav{padding: 15px 50px;}
+.project{float: left;margin-right: 100px;margin-top: -5px;}
+.project .cur{font-size: 18px;}
+.project .icon-sort-down{vertical-align: super;}
+.menu{float: left;}
+.menu>li{margin: 0 15px;}
+.menu>li>a{text-decoration: none;color: #333;}
+.menu .cur{font-weight: bold;}
+.thread{float: left;height: 20px;border-right: 1px solid #333;}
+.hide{display: none;}
+.group{}
+.icon{cursor: pointer;}
+.icon-search, .icon-cog{color: rgba(49, 135, 221, 0.76);font-size: 16px;cursor: pointer;margin-left: 15px;}
+section{padding: 15px 50px;}
+.tab-box{position: relative;margin: 0 0 15px;overflow: hidden;}
+.log-wrap{margin: 15px 0;}
+.tab-nav>li{margin: 0 10px;}
+.tab-nav>li.cur{font-weight: bold;}
+.tab{width: 250px;min-height: 400px;float: left;border: 1px solid #333;margin: 10px;padding: 10px;}
+.task-item{width: 100%;position: relative;padding: 10px 0 0;}
+.tab-header{border-bottom: 1px solid #333;padding: 0 0 10px;}
+.tab-header h3{float: left;}
+.tab-header .icon{margin-top: 7px;}
+.task-pie{position: absolute;left:0;width: 30px;height: 30px;border-radius: 50%;background: #abcdef;text-indent: -9999px;}
+.task-name{padding-left: 38px;}
+.task-author{text-align: right;}
+.task-item-child{margin: 10px 0 0;}
+.task-item-child>li{width: 100%;margin-left: 20px;position: relative;padding: 10px 20px 0 0;}
+.icon-folder-close-alt{font-size: 50px;color: #12d890;}
+.file-item>li{margin: 15px 25px 15px 15px;}
+footer{padding: 0 50px;}
+footer>p{text-align: center;border-top: 1px solid #ccc;padding: 15px 0;}
+.well{padding: 10px;}
+.timeline{padding: 10px;}
+.timeline .day{width: 100%;margin-top: 20px;position: relative;}
+.work-list{width: 100%;padding:0 60px;}
+.time-flag{width: 50px;height: 50px;border-radius: 50%;text-align: center;line-height: 50px;border: 1px solid #444;position: absolute;top: -17px;}
+.work-item{width: 100%;border-top: 1px solid #ccc;position: relative;}
+.work-item .work-name{position: absolute;right: -50px;top: -12px;}
+.work-item>div{margin: 10px 0;}
+.illustrator{width:50px;height: 50px;background: #abcdef;border-radius: 50%;border: none;vertical-align: middle;margin: 0 5px;}
+.illustrator.mini{width: 35px;height: 35px;}
+.icon.icon-plus-sign{font-size: 22px;margin-right: 5px;vertical-align: middle;}
+.member-list{border-top: 1px solid #ccc;position: relative;margin: 25px 0;padding: 25px;}
+.group-name{position: absolute;top: -20px;left: 0;padding: 10px;background: #f7f7f7;}
+.member{position: relative;float: left;margin: 10px;}
+.member img{position: absolute;}
+.member .msg{padding-left: 50px;}
+.subject-name{font-size: 16px;font-weight: bold;}
+.vote-box>div{margin: 10px 0;}
+input[type="radio"]{vertical-align: middle;margin-right: 6px;}
+.btn{padding: 3px 10px;}
+.lecture-history li{float: none;margin: 15px 0;}
+.file-list{position: absolute;right: 25px;top: 10px;}
+.discus-table tr th, .discus-table tr td{text-align: center;}
+caption{text-align: left;border-bottom: 2px solid #ddd;padding: 5px 10px 10px;}
+.icon.icon-flag{color: rgba(255,100,10,10);font-size: 24px;}
+.icon-minus-sign{font-size: 14px;margin-right: 2px;}
+.displayMoreBar{text-align: center;margin: 50px 0 10px;}
+.displayMoreBar span{cursor: pointer;color: #ccc;}
+.post-bar{padding: 5px 10px;background: #ddd;}
+.today{margin-right: 10px;}
+.new-project-name{display: block;width: 100%;height: 30px;line-height: 30px;margin: 15px 0;text-indent: 5px;}
+.new-project-content{display: block;width: 100%;height: 150px;padding: 5px;margin: 0 0 15px;}
+.member-filter{margin: 15px 0;}
+.search-box{display: inline-block;width: 200px;height: 25px;position: relative;}
+.search-box input{width: 200px;height: 25px;line-height: 25px;}
+.search-box .icon.icon-search{position: absolute;right: 4px;top: 4px;}
+a.grp-tag{margin: 0 5px;}
+.profile-list>li{background: rgba(186, 224, 177, 0.78);margin: 5px 15px 5px 0;}
+.submit-box{margin: 15px 0;}
+.submit-box b{margin: 0 10px;cursor: pointer;}
+#loading{z-index:1;padding:5px 0 5px 9px;
+    background:#c44;left:0;top:0;width:90px;
+    color:#fff;position:fixed}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记账</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="../js/jquery.nbs.tag.ajax.js" ></script>
+    <link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../css/jqm-demos.css">
+</head>
+<body>
+<div data-role="page" class="jqm-demos" data-quicklinks="true">
+    <div data-role="header">
+        <div>
+            <fieldset data-role="fieldcontain" style="float:right;margin: 0">
+                <select name="account_book" id="account_book" data-native-menu="false">
+                    <option value="1">账本一</option>
+                    <option value="2">账本二</option>
+                    <option value="3">账本三</option>
+                </select>
+            </fieldset>
+            <a href="#accountBookDialog" data-rel="popup"  data-transition="slidefade" data-position-to="window" class="ui-btn">添加账本</a>
+            <div data-role="popup" id="accountBookDialog">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+                <div data-role="header">
+                    <h1>添加账本</h1>
+                </div>
+                <div data-role="main" class="ui-content">
+
+                    <form method="get" action="">
+                        <input name="text" id="ab_name" value="" placeholder="账本名称" type="text">
+                    </form>
+
+                </div>
+                <div data-role="footer">
+                    <button class="ui-btn" id="account_book_btn" style="width: 100%">确定</button>
+                </div>
+            </div>
+            <a href="#accountDialog" data-rel="popup"  data-transition="flow" data-position-to="window" class="ui-btn">添加账户</a>
+            <div data-role="popup" id="accountDialog">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+                <div data-role="header">
+                    <h1>添加账户</h1>
+                </div>
+                <div data-role="main" class="ui-content">
+
+                    <form method="get" action="">
+                        <input name="text" id="ab_name" value="" placeholder="账户名称" type="text">
+                    </form>
+
+                </div>
+                <div data-role="footer">
+                    <button class="ui-btn" id="account2_btn" style="width: 100%">确定</button>
+                </div>
+            </div>
+            <a href="#myPopupDialog" data-rel="popup"  data-transition="slidedown" data-position-to="window" class="ui-btn">记一笔</a>
+            <a href="#shareDialog" data-rel="popup"  data-transition="turn" data-position-to="window" class="ui-btn">分享</a>
+            <div data-role="popup" id="shareDialog">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+                <div data-role="header">
+                    <h1>分享</h1>
+                </div>
+                <div data-role="main" class="ui-content">
+
+                    <form method="get" action="">
+                        <input name="text" id="ab_name" value="" placeholder="分享给谁？" type="text">
+                    </form>
+
+                </div>
+                <div data-role="footer">
+                    <button class="ui-btn" id="share_btn" style="width: 100%">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-demo-html="true">
+        <div data-role="tabs">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#one" data-theme="a" data-ajax="false" class="ui-btn-active ui-state-persist">明细</a></li>
+                    <li><a href="#two" data-theme="a" data-ajax="false">账户</a></li>
+                </ul>
+            </div>
+
+            <div id="one" class="ui-content">
+                <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
+                    <thead>
+                    <tr>
+                        <th data-priority="1">用途</th>
+                        <th data-priority="2">费用</th>
+                        <th data-priority="3">时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="account_list">
+                    </tbody>
+                </table>
+            </div>
+            <div id="two" class="ui-content">
+                <ul data-role="listview">
+                    <li><a href="#">现金账户</a></li>
+                    <li><a href="#">微信账户</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+            <a href="#myPopupDialog" data-rel="popup"  data-transition="slideup" data-position-to="window" class="ui-btn" style="width:100%;">记一笔</a>
+            <div data-role="popup" id="myPopupDialog">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+                <div data-role="header">
+                    <h1>记一笔</h1>
+                </div>
+                <div data-role="main" class="ui-content">
+
+                    <form method="get" action="">
+                        <select id="sz" name="sz">
+                            <option value="0">支出</option>
+                            <option value="1">收入</option>
+                        </select>
+                        <input name="text" id="yt" value="" placeholder="用途" type="text">
+                        <input name="text" id="fy" value="" placeholder="费用" type="text">
+                        <input type="date" name="date" id="date">
+                        <select id="account" name=""account"">
+                                <option value="1">现金账户</option>
+                                <option value="2">微信账户</option>
+                        </select>
+                    </form>
+
+                </div>
+                <div data-role="footer">
+                    <button class="ui-btn" id="account_btn" style="width: 100%">确定</button>
+                </div>
+            </div>
+        </div><!-- /footer -->
+    </div>
+</div>
+
+
+
+<script>
+    $(function(){
+        $("#account_btn").on("click",function(){
+           var arg  = {};
+           arg.type = $("#sz").val();
+           arg.purpose = $("#yt").val();
+           arg.cost = $("#fy").val();
+           arg.cost_time = $("#date").val();
+           arg.account_id = $("#account").val();
+           arg.account_book_id = $("#account_book").val();
+           arg.create_user="test";
+           console.debug(arg);
+           $.nbs.tagBiz({
+         		biz_rel : 'detail_insert',
+         		ds_rel	: 'accounting.accounting',
+         		async   : false,
+         		arg		: arg,
+         		callback: function(json){
+         			if(json.res){
+         				var n = arg;
+         				var _tr = tr;
+      					var _type = "支出";
+      					if(n.type=='1'){
+      						_type = "收入";
+      					}
+    	      			_tr = _tr.replace(/#purpose#/g,n.purpose);
+    	      			_tr = _tr.replace(/#cost#/g,n.cost+"("+_type+")");
+    	      			_tr = _tr.replace(/#cts#/g,n.cost_time);
+    	      			$("#account_list").prepend(_tr);
+         			}
+       		}
+       	});
+        });
+        var tr = '<tr>\
+            <th>#purpose#</th>\
+            <td>#cost#</td>\
+            <td>#cts#</td>\
+        </tr>';
+        $.nbs.tagBiz({
+      		biz_rel : 'detail_list',
+      		ds_rel	: 'accounting.accounting',
+      		async   : false,
+      		arg		: {},
+      		callback: function(json){
+      			if(json.res){
+      				$.each(json.ret.res,function(i,n){
+      					var _tr = tr;
+      					var _type = "支出";
+      					if(n.type=='1'){
+      						_type = "收入";
+      					}
+    	      			_tr = _tr.replace(/#purpose#/g,n.purpose);
+    	      			_tr = _tr.replace(/#cost#/g,n.cost+"("+_type+")");
+    	      			_tr = _tr.replace(/#cts#/g,n.cts);
+    	      			$("#account_list").append(_tr);
+      				});
+      			}
+    		}
+    	});
+    });
+</script>
+</body>
+</html>
