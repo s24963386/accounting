@@ -731,3 +731,89 @@
 	color: #fff;
 	text-shadow: none;
 }
+
+
+/** 图标大小 **/
+.user-ui-btn .ui-icon{
+  width:36px;
+  height:36px;
+}
+/** 设置字体大小，由于图标变大，所以文字适当的调大一些 **/
+.user-ui-btn  .ui-btn-text{
+  line-height:36px;
+  font-size:20px;
+}
+
+/** 无文字按钮 **/
+.user-ui-btn  .ui-btn-icon-notext{
+  width:42px;
+  height:42px;
+  webkit-border-radius: 2em;
+  border-radius: 2em;
+}
+
+/** 图标左边 **/
+.user-ui-btn .ui-btn-icon-left .ui-btn-inner {
+  padding-left: 50px;
+}
+
+.user-ui-btn  .ui-btn-icon-left .ui-icon{
+  left:10px;
+  margin-top: -18px;
+}
+/** 图标在右边 **/
+.user-ui-btn .ui-btn-icon-right .ui-btn-inner {
+  padding-right: 50px;
+}
+
+.user-ui-btn  .ui-btn-icon-right .ui-icon{
+  right:10px;
+  margin-top: -18px;
+}
+
+/** 图标在上边 **/
+.user-ui-btn .ui-btn-icon-top .ui-btn-inner {
+  padding-top: 50px;
+}
+
+.user-ui-btn  .ui-btn-icon-top .ui-icon{
+  top:10px;
+  margin-left: -18px;
+}
+/** 图标在下边 **/
+.user-ui-btn .ui-btn-icon-bottom .ui-btn-inner {
+  padding-bottom: 50px;
+}
+
+.user-ui-btn  .ui-btn-icon-bottom .ui-icon{
+  bottom:10px;
+  margin-left: -18px;
+}
+
+/** 定义自己的图标 **/
+.user-ui-btn .ui-icon-demo1{
+  background:url('./images/facebook.png') no-repeat -108px 0px;
+}
+
+.user-ui-btn .ui-icon-demo2{
+  background:url('./images/skype.png') no-repeat -180px -180px;
+}
+
+.user-ui-btn .ui-icon-demo3{
+  background:url('./images/twitter-2.png') no-repeat -252px -360px;
+}
+
+.user-ui-btn .ui-icon-demo4{
+  background:url('./images/vimeo.png') no-repeat -36px -180px;
+}
+
+.user-ui-btn .ui-icon-demo5{
+  background:url('./images/vimeo.png') no-repeat -504px -612px;
+}
+th {
+    border-bottom: 1px solid #d6d6d6;
+}
+
+tr:nth-child(even) {
+    background: #e9e9e9;
+}

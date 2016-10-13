@@ -109,7 +109,7 @@
 	</servlet-mapping> 
     
     <welcome-file-list>
-    	<welcome-file>/spa/home.jsp</welcome-file>
+    	<welcome-file>/page/index.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

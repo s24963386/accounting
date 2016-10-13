@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasets xmlns="http://www.sumscope.com"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.sumscope.com datasets.cfg.xsd" >
+<dataset id="accounting">
+<bizs>
+	<biz id="detail_list">
+		<script>
+		<![CDATA[
+				select *,DATE_FORMAT(cost_time,'%Y-%m-%d') as cts from accounting_detail where create_user=${param.username} and account_book_id=${param.account_book_id} order by create_time desc
+			]]>	
+		</script>
+	</biz>
+	<biz id="detail_insert">
+		<script>
+		<![CDATA[
+				insert into accounting_detail(id,purpose,cost,cost_time,account_id,create_user,account_book_id,type)
+				 values ('uuid()',${param.purpose},${param.cost},${param.cost_time},${param.account_id},${param.create_user},${param.account_book_id},${param.type})
+			]]>	
+		</script>
+	</biz>
+	<biz id="book_insert">
+		<script>
+		<![CDATA[
+				insert into account_book(id,name,create_user)
+				 values ('uuid()',${param.name},${param.create_user})
+			]]>	
+		</script>
+	</biz>
+	<biz id="book_account_insert">
+		<script>
+		<![CDATA[
+				insert into account(id,name,create_user,balance,account_book_id)
+				 values ('uuid()',${param.name},${param.create_user},${param.balance},${param.account_book_id})
+			]]>	
+		</script>
+	</biz>
+	<biz id="share_insert">
+		<script>
+		<![CDATA[
+				insert into account_book_user_rel(account_book_id,username)
+				 values (${param.account_book_id},${param.name})
+			]]>	
+		</script>
+	</biz>
+</bizs>
+</dataset>
+</datasets>
