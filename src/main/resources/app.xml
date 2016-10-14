@@ -7,7 +7,7 @@
 		<item name="show-sql"  value="true" />
 		
 		<!-- 自定义登录模式 -->
-		<item name="login.type" value="custom" />
+		<item name="login.type" value="db" />
 		<item name="login.appid" value="2" />
 		<!-- 认证中心连接的数据库不是默认数据源，需指定：login.datasource  -->	
 		<!-- 简单登录模式	
@@ -73,6 +73,6 @@
 	<!-- 定义所有结果集，含对结果集操作的SQL语句(按需) -->
 	<datasets>
 		<dataset ds-rel="default" recursive="true" pattern="true" name="tag" title="测试库相关的数据集" file="classpath:/(tag_)(\S*?)(\.xml)" />
-		<dataset ds-rel="default" recursive="true" pattern="true" name="accounting" title="accounting" file="classpath:/(accounting)(\S*?)(\.xml)" />
+		<dataset ds-rel="default" recursive="true" pattern="true" name="accounting" title="accounting" file="classpath:/(account)(\S*?)(\.xml)" />
 	</datasets>	
 </app>

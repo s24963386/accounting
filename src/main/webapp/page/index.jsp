@@ -17,7 +17,7 @@
 <div data-role="page" class="jqm-demos" data-quicklinks="true">
     <div data-role="header">
         <div>
-        	<sn:dataset name="ds1">select * from account_book where create_user = {param.username}</sn:dataset>
+        	<sn:dataset name="ds1">select * from account_book where create_user = {param.username} or id in (select distinct account_book_id from account_book_user_rel where username={param.username})</sn:dataset>
             <fieldset data-role="fieldcontain" style="float:right;margin: 0;padding:0;">
                 <select name="account_book" id="account_book" data-native-menu="false">
                 	<sn:repeat varStatus="sts" var="item" items="${ds1}">
@@ -153,6 +153,7 @@
      </tr>';
      function initDetailList(){
     	 $.nbs.tagBiz({
+    			webroot : '<sn:webroot/>',
     	   		biz_rel : 'detail_list',
     	   		ds_rel	: 'accounting.accounting',
     	   		async   : false,
@@ -182,6 +183,7 @@
     		arg.name = $("#book_name").val();
     		 arg.create_user=username;
              $.nbs.tagBiz({
+            	webroot : '<sn:webroot/>',
            		biz_rel : 'book_insert',
            		ds_rel	: 'accounting.accounting',
            		async   : false,
@@ -199,6 +201,7 @@
     		arg.name = $("#share_name").val();
     		 arg.account_book_id= $("#account_book").val();
              $.nbs.tagBiz({
+            	 webroot : '<sn:webroot/>', 
            		biz_rel : 'share_insert',
            		ds_rel	: 'accounting.accounting',
            		async   : false,
@@ -218,6 +221,7 @@
     		 arg.create_user=username;
     		 arg.account_book_id = $("#account_book").val();
              $.nbs.tagBiz({
+            	 webroot : '<sn:webroot/>', 
            		biz_rel : 'book_account_insert',
            		ds_rel	: 'accounting.accounting',
            		async   : false,
@@ -239,6 +243,7 @@
            arg.account_book_id = $("#account_book").val();
            arg.create_user=username;
            $.nbs.tagBiz({
+        	   webroot : '<sn:webroot/>',
          		biz_rel : 'detail_insert',
          		ds_rel	: 'accounting.accounting',
          		async   : false,

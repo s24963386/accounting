@@ -7,7 +7,7 @@
 	<biz id="detail_list">
 		<script>
 		<![CDATA[
-				select *,DATE_FORMAT(cost_time,'%Y-%m-%d') as cts from accounting_detail where create_user=${param.username} and account_book_id=${param.account_book_id} order by create_time desc
+				select *,DATE_FORMAT(cost_time,'%Y-%m-%d') as cts from accounting_detail where account_book_id=${param.account_book_id} order by create_time desc
 			]]>	
 		</script>
 	</biz>
