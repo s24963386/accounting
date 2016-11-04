@@ -88,6 +88,7 @@
             </div>
 
             <div id="one" class="ui-content">
+            	<span id="bookDetail"></span>
                 <table data-role="table" id="myTable" data-mode="columntoggle" class="ui-responsive">
                     <thead>
                     <tr>
@@ -95,6 +96,7 @@
                         <th>费用</th>
                         <th data-priority="1">收支</th>
                         <th data-priority="1">时间</th>
+                        <th data-priority="1">操作</th>
                     </tr>
                     </thead>
                     <tbody id="account_list">
@@ -145,11 +147,12 @@
 <script>
 	var username = "<%=request.getParameter("username")%>";
 	
-	 var tr = '<tr>\
+	 var tr = '<tr id="tr_#id#">\
          <td>#purpose#</td>\
          <td>#cost#</td>\
          <td>#sts#</td>\
          <td>#cts#</td>\
+         <td><a href="#" onclick="javascript:deleteDetail(\'#id#\');" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">delete</a></td>\
      </tr>';
      function initDetailList(){
     	 $.nbs.tagBiz({
@@ -159,6 +162,7 @@
     	   		async   : false,
     	   		arg		: {username:username,account_book_id:$("#account_book").val()},
     	   		callback: function(json){
+    	   			$("#account_list").empty();
     	   			if(json.res){
     	   				$.each(json.ret.res,function(i,n){
     	   					var _tr = tr;
@@ -170,6 +174,7 @@
     	 	      			_tr = _tr.replace(/#cost#/g,n.cost);
     	 	      			_tr = _tr.replace(/#sts#/g,_type);
     	 	      			_tr = _tr.replace(/#cts#/g,n.cts);
+    	 	      			_tr = _tr.replace(/#id#/g,n.id);
     	 	      			$("#account_list").append(_tr);
     	   				});
     	   				$("#myTable").table("refresh");
@@ -177,6 +182,35 @@
     	 		}
     	 	});
      }
+     function deleteDetail(id){
+    	 $.post("<sn:webroot/>/restful/detail/delete.jhtml",{id:id},function(json){
+      	   if(json.res){
+      		   $("#tr_"+id).remove();
+  				$("#myTable").table("refresh");
+  				initBookDetail();
+  			}
+         });
+     }
+    function initBookDetail(){
+    	$("#bookDetail").empty();
+    	$.nbs.tagBiz({
+			webroot : '<sn:webroot/>',
+	   		biz_rel : 'book_get',
+	   		ds_rel	: 'accounting.accounting',
+	   		async   : false,
+	   		arg		: {id:$("#account_book").val()},
+	   		callback: function(json){
+	   			if(json.res){
+	   				$.each(json.ret.res,function(i,n){
+	   					if(i==0){
+	   						$("#bookDetail").text("总收入："+n.income+"，总支出："+n.outcome+"，剩余："+n.balance);
+	   					}
+	   				});
+	   			}
+	 		}
+	 	});
+    }
+     
     $(function(){
     	$("#account_book_btn").on("click",function(){
     		var arg = {};
@@ -242,32 +276,31 @@
            arg.account_id = $("#account").val();
            arg.account_book_id = $("#account_book").val();
            arg.create_user=username;
-           $.nbs.tagBiz({
-        	   webroot : '<sn:webroot/>',
-         		biz_rel : 'detail_insert',
-         		ds_rel	: 'accounting.accounting',
-         		async   : false,
-         		arg		: arg,
-         		callback: function(json){
-         			if(json.res){
-         				var n = arg;
-         				var _tr = tr;
-      					var _type = "支出";
-      					if(n.type=='1'){
-      						_type = "收入";
-      					}
-    	      			_tr = _tr.replace(/#purpose#/g,n.purpose);
-    	      			_tr = _tr.replace(/#cost#/g,n.cost);
-    	      			_tr = _tr.replace(/#sts#/g,_type);
-    	      			_tr = _tr.replace(/#cts#/g,n.cost_time);
-    	      			$("#account_list").prepend(_tr);
-         				$("#account_btn_close").click();
-         				$("#myTable").table("refresh");
-         			}
-       		}
-       	});
+           $.post("<sn:webroot/>/restful/detail/insert.jhtml",arg,function(json){
+        	   if(json.res){
+    				var n = arg;
+    				var _tr = tr;
+ 					var _type = "支出";
+ 					if(n.type=='1'){
+ 						_type = "收入";
+ 					}
+	      			_tr = _tr.replace(/#purpose#/g,n.purpose);
+	      			_tr = _tr.replace(/#cost#/g,n.cost);
+	      			_tr = _tr.replace(/#sts#/g,_type);
+	      			_tr = _tr.replace(/#cts#/g,n.cost_time);
+	      			$("#account_list").prepend(_tr);
+    				$("#account_btn_close").click();
+    				$("#myTable").table("refresh");
+    				initBookDetail();
+    			}
+           });
+        });
+        $("#account_book").on("change",function(){
+        	initDetailList();
+        	initBookDetail();
         });
         initDetailList();
+        initBookDetail();
     });
 </script>
 </body>

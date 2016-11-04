@@ -43,6 +43,13 @@
 			]]>	
 		</script>
 	</biz>
+	<biz id="book_get">
+		<script>
+		<![CDATA[
+			select * from account_book where id = ${param.id}
+			]]>	
+		</script>
+	</biz>
 </bizs>
 </dataset>
 </datasets>

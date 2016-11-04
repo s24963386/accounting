@@ -75,7 +75,7 @@
 	</servlet-mapping>  
 	<servlet-mapping>
 		<servlet-name>dispatchServlet</servlet-name>
-		<url-pattern>*.plug</url-pattern>
+		<url-pattern>*.jhtml</url-pattern>
 	</servlet-mapping>  
 	
 	<!-- freemarker配置 -->
